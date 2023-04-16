@@ -235,4 +235,43 @@ $(document).ready(function () {
     };
 
     navigateToUrlLocation();
+
+    // add context menu to file and directory items
+    $(document).on("contextmenu", ".file-link", function (event) {
+        // prevent default context menu
+        event.preventDefault();
+    
+        // remove any existing context menus
+        $(".context-menu").remove();
+    
+        // create context menu
+        var menu = $("<div>").addClass("context-menu");
+        var copyItem = $("<div>").addClass("menu-item").text("Copy");
+        var deleteItem = $("<div>").addClass("menu-item").text("Delete");
+        var renameItem = $("<div>").addClass("menu-item").text("Rename");
+        menu.append(copyItem).append(deleteItem).append(renameItem);
+    
+        // position menu
+        menu.css({
+        top: event.pageY + "px",
+        left: event.pageX + "px",
+        position: "absolute",
+        });
+    
+        // append menu to body
+        $("body").append(menu);
+    
+        // remove menu on click
+        menu.on("click", function (event) {
+        event.stopPropagation();
+        menu.remove();
+        });
+    
+        // remove menu on click outside
+        $(document).on("click.contextmenu", function () {
+        menu.remove();
+        $(document).off("click.contextmenu");
+        });
+    });  
+
 });

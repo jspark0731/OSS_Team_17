@@ -1,0 +1,21 @@
+.context-menu {
+    border: 1px solid white;
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+    min-width: 100px;
+  }
+  
+  .context-menu .menu-item {
+    padding: 5px 10px;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .context-menu .menu-item:last-child {
+    border-bottom: none;
+  }
+  
+  .context-menu .menu-item:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
